@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="512" height="512">
+  <title>CYBERTUSK elephant mark</title>
+  <rect width="128" height="128" rx="28" fill="#243fee"/>
+  <path fill="#fff" d="M64 27c-8-5-18-4-26 3l-21 9 4 18 14 12 9-13 5-11 5 5-6 14 8 24 2 13 9 5 13-4 6-12-7-4-5 8-8-2-2-14 9-15-5-13 5-5 5 11 9 13 15-12 8-18-22-9c-8-7-18-8-24-3Z"/>
+  <path fill="#cfff70" d="M45 63C43 82 31 88 17 80c5 15 24 20 36 1l-8-18Zm38 0c2 19 14 25 28 17-5 15-24 20-36 1l8-18Z"/>
+  <path fill="#243fee" d="M63 36h4v10h-4z"/>
+  <circle cx="65" cy="36" r="3.5" fill="#243fee"/>
+</svg>

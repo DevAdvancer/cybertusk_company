@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+.env*
+!.env.example
+.openai/*.tar*
+/WhatsApp Image 2026-11-12 at 8.03.24 AM.jpeg
