@@ -27,3 +27,9 @@ Run `npm run build` and publish the contents of `out/` to a static host with dir
 
 Company details, services and FAQs are in `lib/company.ts`. Metadata and structured data are in `lib/seo.ts`. The SVG mark is at `public/brand/cybertusk-mark.svg`. The original reference remains in the workspace.
 
+## Homepage artwork
+
+The engineering artwork was created with built-in ImageGen. The responsive assets are `public/engineering-640.webp` and `public/engineering-1200.webp`.
+
+> Original luxury editorial 3D artwork for the hero of CYBERTUSK, an enterprise software engineering consultancy. Render one sculptural, architectural object: three thick interlocking rectangular links with softly rounded corners, stepping diagonally upward from low left to high right. Brushed dark titanium edges, translucent layered electric cobalt blue glass, a single restrained thin lime-green light on one inner seam. Large clear three-dimensional silhouette, sharp restrained reflections, believable materials, industrial design studio quality. Pitch-deep navy seamless background near #080f22 with a subtle cobalt glow behind the main object and shadowy edges. Landscape 4:3 layout, sculpture centered slightly right and occupying 75 percent of the width. Camera at a three-quarter angle, plenty of dark breathing room, all parts inside the frame. No text, no typography, no logos, no people, no city, no lines or cables floating around the object, no particles, no illustrative UI.
+

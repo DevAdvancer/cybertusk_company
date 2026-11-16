@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ClipboardList, Clock3, MapPin } from "lucide-react";
 import { FaqList } from "../components/faq-list";
 import { JsonLd } from "../components/json-ld";
-import { SkylineSignal } from "../components/motion-graphics";
 import { ProjectCta } from "../components/project-cta";
 import { ServiceIcon } from "../components/service-icon";
 import { absoluteUrl, company, questions, services, steps } from "../lib/company";
@@ -13,6 +12,12 @@ export const metadata = pageMetadata(
   "Software Development & IT Consulting in Dubai | CYBERTUSK",
   company.description,
 );
+
+const workflow = [
+  { icon: ClipboardList, label: "Request received" },
+  { icon: Clock3, label: "In review" },
+  { icon: Check, label: "Approved" },
+];
 
 export default function Home() {
   return (
@@ -33,40 +38,39 @@ export default function Home() {
         ],
       }} />
 
-      <section className="container hero" aria-labelledby="hero-title">
-        <div className="hero-content intro-motion">
-          <p className="eyebrow"><span className="eyebrow-dot" /> Software development & IT consulting</p>
-          <h1 id="hero-title">Build what moves you <em>forward.</em></h1>
-          <p className="hero-copy">CYBERTUSK is a Dubai-based software development and IT consulting company. We help you turn a business need into software that works for your team.</p>
-          <div className="hero-actions">
-            <Link href="/contact/" className="button button-primary">Start a project <ArrowUpRight aria-hidden size={19} /></Link>
-            <Link href="/services/" className="text-link">Explore services <ArrowRight aria-hidden size={16} /></Link>
+      <section className="home-hero" aria-labelledby="hero-title">
+        <div className="container hero">
+          <div className="hero-content intro-motion">
+            <p className="eyebrow"><span className="eyebrow-dot" /> Software development & IT consulting</p>
+            <h1 id="hero-title"><span>Build software.</span> <em>Connect systems.</em></h1>
+            <p className="hero-copy">We help businesses launch custom applications, connect existing tools and make better technology decisions.</p>
+            <div className="hero-actions">
+              <Link href="/contact/" className="button button-lime">Start a project <ArrowUpRight aria-hidden size={19} /></Link>
+              <Link href="/services/" className="button button-outline">Explore services <ArrowRight aria-hidden size={17} /></Link>
+            </div>
+            <p className="hero-location"><MapPin aria-hidden size={16} /> Based in Dubai, United Arab Emirates</p>
+          </div>
+          <div className="hero-visual" aria-hidden="true">
+            <img
+              src="/engineering-1200.webp"
+              srcSet="/engineering-640.webp 640w, /engineering-1200.webp 1200w"
+              sizes="(max-width: 740px) calc(100vw - 40px), (max-width: 1350px) 50vw, 680px"
+              width={1200}
+              height={900}
+              fetchPriority="high"
+              alt=""
+            />
           </div>
         </div>
-        <figure className="hero-visual">
-          <img
-            src="/dubai-1200.webp"
-            srcSet="/dubai-600.webp 600w, /dubai-1200.webp 1200w"
-            sizes="(max-width: 740px) calc(100vw - 40px), (max-width: 1250px) 48vw, 580px"
-            width={1200}
-            height={900}
-            fetchPriority="high"
-            alt="Illustrated view of Downtown Dubai and the Burj Khalifa at blue hour"
-          />
-          <span className="frame-corner frame-top" aria-hidden="true" />
-          <span className="frame-corner frame-bottom" aria-hidden="true" />
-          <SkylineSignal />
-          <figcaption><MapPin aria-hidden size={16} /> Dubai, United Arab Emirates</figcaption>
-        </figure>
       </section>
 
       <section className="container services section-space" id="services" aria-labelledby="services-title">
         <div className="section-heading">
           <div>
-            <p className="eyebrow"><span className="eyebrow-dot" /> Services</p>
-            <h2 id="services-title">Ways we can help</h2>
+            <h2 id="services-title">Technology services</h2>
+            <p>From deciding what to build to delivering software your team can use.</p>
           </div>
-          <p>Bring us a product idea, a technology decision or a process your team wants to simplify.</p>
+          <Link href="/services/" className="text-link detail-next">View all services <ArrowRight aria-hidden size={17} /></Link>
         </div>
         <div className="service-grid">
           {services.map((service) => (
@@ -80,16 +84,35 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="container project-example" aria-labelledby="project-example-title">
+        <div className="project-example-inner">
+          <div>
+            <p className="eyebrow"><span className="eyebrow-dot" /> Illustrative project</p>
+            <h2 id="project-example-title">Bring approvals out of the inbox</h2>
+            <p>Replace scattered email threads with a portal that tracks requests, records decisions and shows teams what’s waiting for review.</p>
+            <Link href="/services/software-development/" className="text-link detail-next">Explore custom software development <ArrowRight aria-hidden size={17} /></Link>
+          </div>
+          <div className="workflow-example">
+            <h3>Approval workflow</h3>
+            <ol>
+              {workflow.map(({ icon: Icon, label }) => (
+                <li key={label}><span><Icon aria-hidden size={19} /></span>{label}</li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
       <section className="approach section-space" id="approach" aria-labelledby="approach-title">
         <div className="container approach-inner">
           <div>
             <p className="eyebrow"><span className="eyebrow-dot" /> Our approach</p>
-            <h2 id="approach-title">From a first conversation to delivery</h2>
-            <p>We agree on what to solve, what to build first and how your team will take it forward.</p>
+            <h2 id="approach-title">Know what you’ll get at each stage</h2>
+            <p>Agree on scope before work begins, review progress as we deliver, and plan who will own and support the result.</p>
             <Link href="/approach/" className="text-link">See how we deliver <ArrowRight aria-hidden size={17} /></Link>
           </div>
           <ol className="steps">
-            {steps.map((step, index) => <li key={step.name}><span className="step-number">0{index + 1}</span><div><h3>{step.name}</h3><p>{step.detail}</p></div></li>)}
+            {steps.map((step, index) => <li key={step.name}><span className="step-number" aria-hidden="true">0{index + 1}</span><div><h3>{step.name}</h3><p>{step.outcome}</p></div></li>)}
           </ol>
         </div>
       </section>

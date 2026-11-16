@@ -1,13 +1,3 @@
-export function SkylineSignal() {
-  return (
-    <span className="skyline-signal" aria-hidden="true">
-      <span className="skyline-node" />
-      <span className="skyline-trace"><span /></span>
-      <span className="skyline-end" />
-    </span>
-  );
-}
-
 export function ServiceDiagram() {
   return (
     <div className="service-diagram" aria-hidden="true">

@@ -20,7 +20,17 @@ export default function About() {
           <p>{company.description}</p>
           <Link href="/services/" className="button button-primary">Explore our services <ArrowUpRight aria-hidden size={19} /></Link>
         </div>
-        <img className="about-mark" src="/brand/cybertusk-mark.svg" alt="" width={512} height={512} />
+        <figure className="about-skyline">
+          <img
+            src="/dubai-1200.webp"
+            srcSet="/dubai-600.webp 600w, /dubai-1200.webp 1200w"
+            sizes="(max-width: 740px) calc(100vw - 40px), 45vw"
+            width={1200}
+            height={900}
+            alt="Illustrated view of Downtown Dubai and the Burj Khalifa at blue hour"
+          />
+          <figcaption><MapPin aria-hidden size={16} /> {company.location}</figcaption>
+        </figure>
       </section>
       <section className="container about-details" aria-labelledby="working-title">
         <div>
