@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en-AE">
+    <html lang="en-AE" data-scroll-behavior="smooth">
       <body>
         <Header />
         <main id="main" tabIndex={-1}>{children}</main>

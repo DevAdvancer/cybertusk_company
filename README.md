@@ -21,7 +21,7 @@ Copy `.env.example` to `.env.local` and set these build-time values in the hosti
 - Set `SITE_INDEXABLE=true` when serving the official public version. Preview builds default to `noindex, follow`.
 - `CONTACT_EMAIL` is the verified inbound address for project inquiries. When configured, the project brief opens in the visitor’s email app. Copy and download are available in either case.
 
-Run `npm run build` and publish the contents of `out/` to a static host with directory-index support. The site has six pages, including three service detail pages. It also exports `/robots.txt`, `/sitemap.xml` and `/llms.txt`. Once live, submit the sitemap in Google Search Console and Bing Webmaster Tools.
+Run `npm run build` and publish the contents of `out/` to a static host with directory-index support. The site includes a services overview, three service detail pages and a delivery approach page. It also exports `/robots.txt`, `/sitemap.xml` and `/llms.txt`. Once live, submit the sitemap in Google Search Console and Bing Webmaster Tools.
 
 ## Update the site
 

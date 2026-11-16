@@ -38,6 +38,7 @@ export const services = [
   {
     slug: "software-development",
     name: "Custom software development",
+    action: "Build a product",
     summary: "Web applications, client portals and internal tools designed around the way your business works.",
     intro: "Build a new product or replace a process that has outgrown spreadsheets and off-the-shelf tools. We help you define the first release, design the experience and turn it into working software.",
     deliverables: [
@@ -45,11 +46,14 @@ export const services = [
       { name: "Internal tools", detail: "Give teams a shared workspace for approvals, reporting or day-to-day operations." },
       { name: "MVP development", detail: "Put the most important user journey into a first release so you can test it before expanding scope." },
     ],
+    example: "A business team wants to replace email-based approvals with a portal that shows the status of every request.",
+    outcome: "Agree on the first release, build and test the main user journey, and document how the team will run it.",
     startingPoint: "Tell us who will use the software, what they need to do and how you’ll know the first release is working.",
   },
   {
     slug: "it-consulting",
     name: "IT & technology consulting",
+    action: "Plan a change",
     summary: "Clear technical plans for new initiatives, platform decisions and software that needs a better path forward.",
     intro: "Get clarity on a technology decision before committing to a build. We work through the current setup, business goals and practical constraints to identify the next step.",
     deliverables: [
@@ -57,11 +61,14 @@ export const services = [
       { name: "Architecture planning", detail: "Compare platform and integration options based on cost, complexity and your team’s ability to maintain them." },
       { name: "Delivery roadmaps", detail: "Turn competing priorities into a staged plan with clear outcomes and decision points." },
     ],
+    example: "A team needs to decide whether to upgrade its current platform, move to a managed service or replace a component.",
+    outcome: "Compare options against your constraints and translate the chosen direction into a roadmap.",
     startingPoint: "Bring the decision you’re facing, what you use today and the trade-offs that matter to your team.",
   },
   {
     slug: "systems-integration",
     name: "Systems integration",
+    action: "Connect your tools",
     summary: "Connect platforms, move data reliably and automate repetitive handoffs between your teams and tools.",
     intro: "Connect the tools your teams already use. We map how information moves today, then design the integrations and workflows that reduce repeated entry and manual follow-up.",
     deliverables: [
@@ -69,14 +76,48 @@ export const services = [
       { name: "Workflow automation", detail: "Automate recurring handoffs and notifications with clear rules for exceptions." },
       { name: "Data synchronization", detail: "Define where data lives, how updates flow and how your team can spot and recover from failures." },
     ],
+    example: "Sales and operations enter the same customer data in different systems and need a reliable way to share updates.",
+    outcome: "Map the data flow, implement the handoff, and define how the team can detect and recover from errors.",
     startingPoint: "List the systems involved, the steps your team repeats and where errors or delays usually occur.",
+  },
+] as const;
+
+export const steps = [
+  {
+    name: "Discover",
+    detail: "We map the problem, who it affects and what a successful outcome looks like.",
+    outcome: "A shared brief with priorities, dependencies and open questions.",
+  },
+  {
+    name: "Define",
+    detail: "We agree on scope, priorities and the decisions that need to be made first.",
+    outcome: "A delivery plan with milestones, acceptance criteria and responsibilities.",
+  },
+  {
+    name: "Deliver",
+    detail: "We implement in stages and review working software or recommendations with your team.",
+    outcome: "Reviewed deliverables, test findings and a clear release decision.",
+  },
+  {
+    name: "Hand over",
+    detail: "We agree on what your team needs to operate the solution and who will handle support.",
+    outcome: "Documentation and an agreed plan for ownership and support.",
   },
 ];
 
-export const steps = [
-  { name: "Discover", detail: "We map the problem, who it affects and what a successful outcome looks like." },
-  { name: "Define", detail: "We agree on scope, priorities and the decisions that need to be made first." },
-  { name: "Deliver", detail: "We implement in stages, review progress with you and plan the handover." },
+export const deliveryQuestions = [
+  {
+    question: "Can we start with discovery before committing to a build?",
+    answer: "Yes. Discovery can be scoped as a first engagement to clarify the requirements, compare options and decide what to do next.",
+  },
+  {
+    question: "When do we get a timeline and estimate?",
+    answer: "We can discuss a range once we understand the goals, existing systems and dependencies. We agree on deliverables, milestones and assumptions before implementation.",
+  },
+  {
+    question: "How do you handle security and handover?",
+    answer: "We discuss data sensitivity, access, testing and deployment during scoping. We agree on documentation, operational responsibilities and any post-launch support as part of the engagement.",
+  },
 ];
 
 export const questions = [
@@ -98,13 +139,29 @@ export const questions = [
   },
 ];
 
+export const servicesOverview = {
+  path: "/services/",
+  title: "Software & IT services in Dubai",
+  description: "Explore custom software development, IT consulting and systems integration from CYBERTUSK IT Consultants.",
+};
+
+export const approachPage = {
+  path: "/approach/",
+  title: "How we deliver projects",
+  description: "See how CYBERTUSK scopes, tests, delivers and hands over software and technology consulting projects.",
+};
+
+export const servicePages = services.map((service) => ({
+  path: `/services/${service.slug}/`,
+  title: service.name,
+  description: service.summary,
+}));
+
 export const pages = [
   { path: "/", title: company.name, description: company.description },
   { path: "/about/", title: "About CYBERTUSK", description: "Meet the Dubai-based software development and IT consulting company, founded in 2026." },
-  ...services.map((service) => ({
-    path: `/services/${service.slug}/`,
-    title: service.name,
-    description: service.summary,
-  })),
+  servicesOverview,
+  ...servicePages,
+  approachPage,
   { path: "/contact/", title: "Start a project", description: "Prepare a project brief for a software development, IT consulting or systems integration project." },
 ];

@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { ArrowUpRight, MapPin } from "lucide-react";
-import { company } from "../lib/company";
+import { ArrowUpRight, LayoutGrid, MapPin } from "lucide-react";
+import { company, services } from "../lib/company";
+import { ServiceIcon } from "./service-icon";
+import { ServicesMenu } from "./services-menu";
 
 const navigation = [
-  { href: "/#services", label: "Services" },
-  { href: "/#approach", label: "Approach" },
+  { href: "/approach/", label: "Approach" },
   { href: "/about/", label: "About" },
 ];
 
@@ -24,6 +25,20 @@ export function Header() {
       <div className="container header-inner">
         <Brand />
         <nav aria-label="Main navigation">
+          <ServicesMenu>
+            <Link href="/services/" className="services-menu-item">
+              <span className="service-icon"><LayoutGrid aria-hidden size={19} /></span>
+              <span>All services<small>Compare our capabilities</small></span>
+              <ArrowUpRight aria-hidden size={16} />
+            </Link>
+            {services.map((service) => (
+              <Link href={`/services/${service.slug}/`} className="services-menu-item" key={service.slug}>
+                <ServiceIcon slug={service.slug} size={19} />
+                <span>{service.name}<small>{service.action}</small></span>
+                <ArrowUpRight aria-hidden size={16} />
+              </Link>
+            ))}
+          </ServicesMenu>
           {navigation.map(({ href, label }) => <Link key={href} href={href}>{label}</Link>)}
         </nav>
         <Link href="/contact/" className="button button-small button-dark">Let’s talk <ArrowUpRight aria-hidden size={16} /></Link>
@@ -42,6 +57,7 @@ export function Footer() {
             <p>Software development & IT consulting</p>
           </div>
           <nav aria-label="Footer navigation">
+            <Link href="/services/">Services</Link>
             {navigation.map(({ href, label }) => <Link key={href} href={href}>{label}</Link>)}
             <Link href="/contact/">Contact</Link>
           </nav>

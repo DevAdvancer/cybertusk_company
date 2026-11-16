@@ -3,12 +3,19 @@
 import { type FormEvent, useEffect, useState } from "react";
 import { ArrowRight, Copy, Download, Mail } from "lucide-react";
 
-export function ProjectBrief({ email, serviceNames }: { email: string; serviceNames: string[] }) {
+const undecided = "Not sure yet";
+
+export function ProjectBrief({ email, serviceOptions }: { email: string; serviceOptions: { name: string; slug: string }[] }) {
   const [brief, setBrief] = useState("");
   const [status, setStatus] = useState("");
   const [ready, setReady] = useState(false);
+  const [selectedService, setSelectedService] = useState(undecided);
 
-  useEffect(() => setReady(true), []);
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get("service");
+    setSelectedService(serviceOptions.find((service) => service.slug === slug)?.name ?? undecided);
+    setReady(true);
+  }, [serviceOptions]);
 
   function prepareBrief(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -58,9 +65,9 @@ export function ProjectBrief({ email, serviceNames }: { email: string; serviceNa
           <label htmlFor="brief-email">Work email<input id="brief-email" name="email" type="email" autoComplete="email" maxLength={254} required /></label>
         </div>
         <label htmlFor="brief-service">What do you need?
-          <select id="brief-service" name="service" defaultValue="Not sure yet">
-            {serviceNames.map((service) => <option key={service}>{service}</option>)}
-            <option>Not sure yet</option>
+          <select id="brief-service" name="service" value={selectedService} onChange={(event) => setSelectedService(event.target.value)}>
+            {serviceOptions.map(({ slug, name }) => <option key={slug}>{name}</option>)}
+            <option>{undecided}</option>
           </select>
         </label>
         <label htmlFor="brief-details">What would you like to achieve?

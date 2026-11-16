@@ -1,4 +1,4 @@
-import { absoluteUrl, company, pages, questions } from "../../lib/company";
+import { absoluteUrl, company, deliveryQuestions, pages, questions } from "../../lib/company";
 
 export const dynamic = "force-static";
 
@@ -7,7 +7,7 @@ export function GET() {
     ({ path, title, description }) => `- [${title}](${absoluteUrl(path)}): ${description}`,
   );
 
-  const answers = questions.map(({ question, answer }) => `- ${question} ${answer}`);
+  const answers = [...questions, ...deliveryQuestions].map(({ question, answer }) => `- ${question} ${answer}`);
 
   return new Response(
     [

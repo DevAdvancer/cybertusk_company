@@ -1,7 +1,10 @@
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, Braces, CircuitBoard, Compass, MapPin, Plus } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
+import { FaqList } from "../components/faq-list";
 import { JsonLd } from "../components/json-ld";
+import { SkylineSignal } from "../components/motion-graphics";
 import { ProjectCta } from "../components/project-cta";
+import { ServiceIcon } from "../components/service-icon";
 import { absoluteUrl, company, questions, services, steps } from "../lib/company";
 import { organization, organizationId, pageMetadata } from "../lib/seo";
 
@@ -10,8 +13,6 @@ export const metadata = pageMetadata(
   "Software Development & IT Consulting in Dubai | CYBERTUSK",
   company.description,
 );
-
-const serviceIcons = [Braces, Compass, CircuitBoard];
 
 export default function Home() {
   return (
@@ -33,13 +34,13 @@ export default function Home() {
       }} />
 
       <section className="container hero" aria-labelledby="hero-title">
-        <div className="hero-content">
+        <div className="hero-content intro-motion">
           <p className="eyebrow"><span className="eyebrow-dot" /> Software development & IT consulting</p>
           <h1 id="hero-title">Build what moves you <em>forward.</em></h1>
           <p className="hero-copy">CYBERTUSK is a Dubai-based software development and IT consulting company. We help you turn a business need into software that works for your team.</p>
           <div className="hero-actions">
             <Link href="/contact/" className="button button-primary">Start a project <ArrowUpRight aria-hidden size={19} /></Link>
-            <Link href="#services" className="text-link">Explore services <ArrowDown aria-hidden size={16} /></Link>
+            <Link href="/services/" className="text-link">Explore services <ArrowRight aria-hidden size={16} /></Link>
           </div>
         </div>
         <figure className="hero-visual">
@@ -54,6 +55,7 @@ export default function Home() {
           />
           <span className="frame-corner frame-top" aria-hidden="true" />
           <span className="frame-corner frame-bottom" aria-hidden="true" />
+          <SkylineSignal />
           <figcaption><MapPin aria-hidden size={16} /> Dubai, United Arab Emirates</figcaption>
         </figure>
       </section>
@@ -67,17 +69,14 @@ export default function Home() {
           <p>Bring us a product idea, a technology decision or a process your team wants to simplify.</p>
         </div>
         <div className="service-grid">
-          {services.map((service, index) => {
-            const Icon = serviceIcons[index];
-            return (
-              <Link key={service.slug} href={`/services/${service.slug}/`} className="service-card">
-                <span className="service-icon"><Icon aria-hidden size={28} strokeWidth={1.7} /></span>
-                <span className="service-arrow"><ArrowUpRight aria-hidden size={20} /></span>
-                <h3>{service.name}</h3>
-                <p>{service.summary}</p>
-              </Link>
-            );
-          })}
+          {services.map((service) => (
+            <Link key={service.slug} href={`/services/${service.slug}/`} className="service-card">
+              <ServiceIcon slug={service.slug} />
+              <span className="service-arrow"><ArrowUpRight aria-hidden size={20} /></span>
+              <h3>{service.name}</h3>
+              <p>{service.summary}</p>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -87,6 +86,7 @@ export default function Home() {
             <p className="eyebrow"><span className="eyebrow-dot" /> Our approach</p>
             <h2 id="approach-title">From a first conversation to delivery</h2>
             <p>We agree on what to solve, what to build first and how your team will take it forward.</p>
+            <Link href="/approach/" className="text-link">See how we deliver <ArrowRight aria-hidden size={17} /></Link>
           </div>
           <ol className="steps">
             {steps.map((step, index) => <li key={step.name}><span className="step-number">0{index + 1}</span><div><h3>{step.name}</h3><p>{step.detail}</p></div></li>)}
@@ -101,14 +101,7 @@ export default function Home() {
           <p>Founded in 2026 and based in Dubai, UAE.</p>
           <Link href="/about/" className="text-link">Meet CYBERTUSK <ArrowRight aria-hidden size={17} /></Link>
         </div>
-        <div className="faq-list">
-          {questions.map(({ question, answer }) => (
-            <details key={question}>
-              <summary>{question}<Plus aria-hidden size={20} /></summary>
-              <p>{answer}</p>
-            </details>
-          ))}
-        </div>
+        <FaqList questions={questions} />
       </section>
 
       <ProjectCta />

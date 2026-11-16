@@ -18,7 +18,7 @@ export default function About() {
           <p className="eyebrow"><span className="eyebrow-dot" /> Founded {company.founded} · Dubai, UAE</p>
           <h1>About CYBERTUSK</h1>
           <p>{company.description}</p>
-          <Link href="/#services" className="button button-primary">Explore our services <ArrowUpRight aria-hidden size={19} /></Link>
+          <Link href="/services/" className="button button-primary">Explore our services <ArrowUpRight aria-hidden size={19} /></Link>
         </div>
         <img className="about-mark" src="/brand/cybertusk-mark.svg" alt="" width={512} height={512} />
       </section>

@@ -20,7 +20,7 @@ export default function Contact() {
         {company.contactEmail && <a className="text-link" href={`mailto:${company.contactEmail}`}><Mail aria-hidden size={17} /> {company.contactEmail}</a>}
         <p className="contact-location"><MapPin aria-hidden size={19} /> {company.location}</p>
       </div>
-      <ProjectBrief email={company.contactEmail} serviceNames={services.map(({ name }) => name)} />
+      <ProjectBrief email={company.contactEmail} serviceOptions={services.map(({ name, slug }) => ({ name, slug }))} />
     </section>
   );
 }
