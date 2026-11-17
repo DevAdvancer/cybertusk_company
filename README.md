@@ -11,9 +11,11 @@ npm ci
 npm run dev
 ```
 
-Open http://localhost:3000. To verify a production build, run `npm run build` followed by `npm run typecheck`. Next.js exports the static site to `out/`.
+Open http://localhost:3000. Run `npm run build` and `npm start` to preview the production Next.js server. Run `npm run typecheck` for TypeScript checks.
 
-## Publish on the company domain
+## Deploy to Vercel
+
+Import this project into Vercel with the Next.js framework preset. Use the repository root as the project directory and keep Vercel’s default install, build and output settings. The build command is `npm run build`.
 
 Copy `.env.example` to `.env.local` and set these build-time values in the hosting environment:
 
@@ -21,7 +23,15 @@ Copy `.env.example` to `.env.local` and set these build-time values in the hosti
 - Set `SITE_INDEXABLE=true` when serving the official public version. Preview builds default to `noindex, follow`.
 - `CONTACT_EMAIL` is the verified inbound address for project inquiries. When configured, the project brief opens in the visitor’s email app. Copy and download are available in either case.
 
-Run `npm run build` and publish the contents of `out/` to a static host with directory-index support. The site includes a services overview, three service detail pages and a delivery approach page. It also exports `/robots.txt`, `/sitemap.xml` and `/llms.txt`. Once live, submit the sitemap in Google Search Console and Bing Webmaster Tools.
+Leave `SITE_STATIC_EXPORT` unset on Vercel. Set `SITE_URL` to the official production origin before enabling indexing, then redeploy. Review deployments can keep `SITE_INDEXABLE=false`. The contact form prepares a brief locally and uses the visitor’s email app when an address is configured.
+
+Vercel handles Next.js deployment directly. See the [official framework documentation](https://vercel.com/docs/frameworks/full-stack/nextjs).
+
+## Static preview
+
+Run `npm run build:static` to create a separate static export in `out/`. This command sets `SITE_STATIC_EXPORT=true` only for its build process. Publish `out/` to a static host with directory-index support. The private Sites preview uses this output.
+
+The site includes a services overview, three service detail pages and a delivery approach page, plus `/robots.txt`, `/sitemap.xml` and `/llms.txt`. Once the public company domain is live, submit the sitemap in Google Search Console and Bing Webmaster Tools.
 
 ## Update the site
 

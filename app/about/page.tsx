@@ -17,7 +17,7 @@ export default function About() {
         <div>
           <p className="eyebrow"><span className="eyebrow-dot" /> Founded {company.founded} · Dubai, UAE</p>
           <h1>About CYBERTUSK</h1>
-          <p>{company.description}</p>
+          <p>Founded in 2026 in Dubai, CYBERTUSK IT Consultants brings software development and technology consulting together. We help businesses turn an operational problem or a product idea into a practical plan and working software.</p>
           <Link href="/services/" className="button button-primary">Explore our services <ArrowUpRight aria-hidden size={19} /></Link>
         </div>
         <figure className="about-skyline">
@@ -27,6 +27,7 @@ export default function About() {
             sizes="(max-width: 740px) calc(100vw - 40px), 45vw"
             width={1200}
             height={900}
+            loading="lazy"
             alt="Illustrated view of Downtown Dubai and the Burj Khalifa at blue hour"
           />
           <figcaption><MapPin aria-hidden size={16} /> {company.location}</figcaption>

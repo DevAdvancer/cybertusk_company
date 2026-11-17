@@ -93,8 +93,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
       </section>
       <section className="container project-cta" aria-labelledby="start-title">
         <div className="project-cta-inner">
-          <h2 id="start-title">A starting point for your project</h2>
-          <p>{service.startingPoint}</p>
+          <div>
+            <h2 id="start-title">A starting point for your project</h2>
+            <p>{service.startingPoint}</p>
+          </div>
           <Link href={`/contact/?service=${service.slug}`} className="button button-lime">Prepare a brief <ArrowUpRight aria-hidden size={19} /></Link>
         </div>
       </section>

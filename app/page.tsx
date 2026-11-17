@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Check, ClipboardList, Clock3, MapPin } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import { FaqList } from "../components/faq-list";
 import { JsonLd } from "../components/json-ld";
 import { ProjectCta } from "../components/project-cta";
+import { ProjectExplorer } from "../components/project-explorer";
 import { ServiceIcon } from "../components/service-icon";
 import { absoluteUrl, company, questions, services, steps } from "../lib/company";
 import { organization, organizationId, pageMetadata } from "../lib/seo";
@@ -12,12 +13,6 @@ export const metadata = pageMetadata(
   "Software Development & IT Consulting in Dubai | CYBERTUSK",
   company.description,
 );
-
-const workflow = [
-  { icon: ClipboardList, label: "Request received" },
-  { icon: Clock3, label: "In review" },
-  { icon: Check, label: "Approved" },
-];
 
 export default function Home() {
   return (
@@ -43,7 +38,7 @@ export default function Home() {
           <div className="hero-content intro-motion">
             <p className="eyebrow"><span className="eyebrow-dot" /> Software development & IT consulting</p>
             <h1 id="hero-title"><span>Build software.</span> <em>Connect systems.</em></h1>
-            <p className="hero-copy">We help businesses launch custom applications, connect existing tools and make better technology decisions.</p>
+            <p className="hero-copy">For the work your business needs to get done. CYBERTUSK builds custom applications, connects existing tools and helps you plan the next technology decision.</p>
             <div className="hero-actions">
               <Link href="/contact/" className="button button-lime">Start a project <ArrowUpRight aria-hidden size={19} /></Link>
               <Link href="/services/" className="button button-outline">Explore services <ArrowRight aria-hidden size={17} /></Link>
@@ -84,30 +79,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container project-example" aria-labelledby="project-example-title">
-        <div className="project-example-inner">
-          <div>
-            <p className="eyebrow"><span className="eyebrow-dot" /> Illustrative project</p>
-            <h2 id="project-example-title">Bring approvals out of the inbox</h2>
-            <p>Replace scattered email threads with a portal that tracks requests, records decisions and shows teams what’s waiting for review.</p>
-            <Link href="/services/software-development/" className="text-link detail-next">Explore custom software development <ArrowRight aria-hidden size={17} /></Link>
-          </div>
-          <div className="workflow-example">
-            <h3>Approval workflow</h3>
-            <ol>
-              {workflow.map(({ icon: Icon, label }) => (
-                <li key={label}><span><Icon aria-hidden size={19} /></span>{label}</li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
+      <ProjectExplorer />
 
       <section className="approach section-space" id="approach" aria-labelledby="approach-title">
         <div className="container approach-inner">
           <div>
             <p className="eyebrow"><span className="eyebrow-dot" /> Our approach</p>
-            <h2 id="approach-title">Know what you’ll get at each stage</h2>
+            <h2 id="approach-title">Clear scope. Regular reviews. A considered handover.</h2>
             <p>Agree on scope before work begins, review progress as we deliver, and plan who will own and support the result.</p>
             <Link href="/approach/" className="text-link">See how we deliver <ArrowRight aria-hidden size={17} /></Link>
           </div>

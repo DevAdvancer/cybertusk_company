@@ -51,21 +51,37 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="container">
+        <div className="footer-top">
+          <p>Have a project in mind?</p>
+          <Link href="/contact/" className="footer-project-link">Let’s talk about it <ArrowUpRight aria-hidden size={29} /></Link>
+        </div>
         <div className="footer-main">
-          <div>
+          <div className="footer-brand">
             <Brand />
-            <p>Software development & IT consulting</p>
+            <p>Custom software, connected systems and practical technology advice.</p>
+            <p className="footer-location"><MapPin aria-hidden size={16} /> Dubai, United Arab Emirates</p>
           </div>
-          <nav aria-label="Footer navigation">
-            <Link href="/services/">Services</Link>
-            {navigation.map(({ href, label }) => <Link key={href} href={href}>{label}</Link>)}
-            <Link href="/contact/">Contact</Link>
+          <nav aria-labelledby="footer-services-title">
+            <h2 id="footer-services-title">Services</h2>
+            {services.map(({slug, name}) => <Link key={slug} href={`/services/${slug}/`}>{name}</Link>)}
+            <Link href="/services/">View all services <ArrowUpRight aria-hidden size={13} /></Link>
           </nav>
-          <p className="footer-location"><MapPin aria-hidden size={17} /> {company.location}</p>
+          <nav aria-labelledby="footer-company-title">
+            <h2 id="footer-company-title">Company</h2>
+            <Link href="/about/">About CYBERTUSK</Link>
+            <Link href="/approach/">How we work</Link>
+            <Link href="/contact/">Contact us</Link>
+          </nav>
+          <nav aria-labelledby="footer-project-title">
+            <h2 id="footer-project-title">Your next project</h2>
+            <Link href="/contact/">Prepare a project brief</Link>
+            <Link href="/contact/#brief-info">About the project form</Link>
+            {company.contactEmail && <a href={`mailto:${company.contactEmail}`}>{company.contactEmail}</a>}
+          </nav>
         </div>
         <div className="footer-meta">
           <span>© {new Date().getUTCFullYear()} {company.name}</span>
-          <a href="/llms.txt">LLMs.txt <ArrowUpRight aria-hidden size={13} /></a>
+          <span>Established {company.founded} · Dubai, UAE</span>
         </div>
       </div>
     </footer>
